@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 public interface PlaceRepository extends JpaRepository<PlaceData, UUID> {
     List<PlaceData> findAllByOrderByIdAsc();
     PlaceData findOneById(int id);
-    List<PlaceData> findByscenery(String scenery);
+    List<PlaceData> findByScenery(String scenery);
     List<PlaceData> findBySceneryAndArrival(String scenery, String arrival);
-    List<PlaceData> findByBudgetLimit(int budgetLimit);
+    List<PlaceData> findByBudgetLimitLessThanEqual(int budgetLimit);
+    List<PlaceData> findBySceneryAndBudgetLimitLessThanEqual(String scenery, int budgetLimit);
 }

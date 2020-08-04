@@ -17,15 +17,19 @@ public class PlaceData {
     private String scenery;
     private String arrival;
     private String departure;
-    private String budgetLimit;
+    private int budgetLimit;
+    private String name;
+    private String activities;
 
     public PlaceData(){}
 
-    public PlaceData (String scenery, String arrival, String departure, String budgetLimit) {
+    public PlaceData (String scenery, String arrival, String departure, int budgetLimit, String name, String activities) {
         this.scenery = scenery;
         this.arrival = arrival;
         this.departure = departure;
         this.budgetLimit = budgetLimit;
+        this.name = name;
+        this.activities = activities;
     }
 
     public UUID getId() {
@@ -60,14 +64,29 @@ public class PlaceData {
         this.departure = departure;
     }
 
-    public String getbudgetLimit () {
+    public int getbudgetLimit () {
         return this.budgetLimit;
     }
 
-    public void setbudgetLimit(String budgetLimit) {
+    public void setbudgetLimit(int budgetLimit) {
         this.budgetLimit = budgetLimit;
     }
 
+    public String getname () {
+        return this.name;
+    }
+
+    public void setname(String name) {
+        this.name = name;
+    }
+
+    public String getactivities () {
+        return this.activities;
+    }
+
+    public void setactivities(String activities) {
+        this.activities = activities;
+    }
 
 
 

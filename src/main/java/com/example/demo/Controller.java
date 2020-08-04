@@ -14,12 +14,12 @@ public class Controller {
 
     @GetMapping("/resultz")
     public PlaceData getServerMessage() {
-        return new PlaceData("Ocean", "07-31-20", "08-01-20", "5000");
+        return new PlaceData("Oceanfront", "07-31-20", "08-01-20", 5000, "Virigina Beach", "Swimming");
     }
 
     @PostMapping("/resultz")
     public PlaceData recieveMessage(@RequestBody PlaceData place) {
-        return new PlaceData(place.getScenery(), place.getarrival(), place.getdeparture(), place.getbudgetLimit());
+        return new PlaceData(place.getScenery(), place.getarrival(), place.getdeparture(), place.getbudgetLimit(), place.getname(), place.getactivities());
         
     }
     

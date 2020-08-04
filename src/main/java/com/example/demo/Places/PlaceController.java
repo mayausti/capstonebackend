@@ -24,13 +24,47 @@ public class PlaceController {
 
     //Everything for Create and Read Routes
 
+    @GetMapping("find/{scenery}/{budgetLimit}")
+    public List<PlaceData> findBySceneryAndBudgetLimitLessThanEqual(@PathVariable String scenery, @PathVariable("budgetLimit") int budgetLimit) {
+        //int budgetLimitInt = Integer.parseInt(budgetLimit);
+        int incrementedValue = budgetLimit + 555;
+        System.out.println("incoming value plus 555:"+ incrementedValue);
+        if(scenery.equals("all") && budgetLimit >= 5000){
+            return repository.findAll();
+        }
+        else if (scenery.equals("all") && budgetLimit < 5000){
+            return repository.findByBudgetLimitLessThanEqual(budgetLimit);
+        }
+        else if (!scenery.equals("all") && budgetLimit >= 5000){
+            return repository.findByScenery(scenery);
+        }
+        else {
+            return repository.findBySceneryAndBudgetLimitLessThanEqual(scenery, budgetLimit);
+        }
+        
+
+    }
+
+    @GetMapping("scenery/{scenery}")
+    public List<PlaceData> getByScenery(@PathVariable String scenery){
+        System.out.println("Here is the choice coming in from user: "+scenery);
+        
+        if (scenery.equals("all")) {
+            System.out.println("we have chosen the all option");
+            return repository.findAll();
+        } 
+        else {
+            return repository.findByScenery(scenery);
+        }
+    }
+
     @GetMapping
     public List<PlaceData> readAllPlaces() {
         return repository.findAll();
     }
 
     @GetMapping("/{scenery}/{arrival}")
-    public List<PlaceData> getByScenery(@PathVariable String scenery, @PathVariable String arrival) {
+    public List<PlaceData> getBySceneryAndArrival(@PathVariable String scenery, @PathVariable String arrival) {
         return repository.findBySceneryAndArrival(scenery, arrival);
     }
 
@@ -58,6 +92,8 @@ public class PlaceController {
         placeToEdit.setarrival(place.getarrival());
         placeToEdit.setdeparture(place.getdeparture());
         placeToEdit.setbudgetLimit(place.getbudgetLimit());
+        placeToEdit.setname(place.getname());
+        placeToEdit.setactivities(place.getactivities());
         return repository.save(placeToEdit);
     }
 
