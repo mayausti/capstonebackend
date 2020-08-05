@@ -44,7 +44,7 @@ public class PlaceController {
             return repository.findAll();
         }
         else if (scenery.equals("all") && budgetLimit < 5000){
-            return repository.findByBudgetLimitLessThanEqual(budgetLimit);
+            return repository.customQuery(budgetLimit);
         }
         else if (!scenery.equals("all") && budgetLimit >= 5000){
             return repository.findByScenery(scenery);
