@@ -14,4 +14,6 @@ public interface PlaceRepository extends JpaRepository<PlaceData, UUID> {
     List<PlaceData> findBySceneryAndArrival(String scenery, String arrival);
     List<PlaceData> findByBudgetLimitLessThanEqual(int budgetLimit);
     List<PlaceData> findBySceneryAndBudgetLimitLessThanEqual(String scenery, int budgetLimit);
+    // List<PlaceData> findBySceneryAndBudgetLimit(String scenery, String budgetLimit);
+    // List<PlaceData> findByBudgetLimit(String budgetLimit);
 }

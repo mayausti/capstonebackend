@@ -23,7 +23,18 @@ public class PlaceController {
     PlaceRepository repository;
 
     //Everything for Create and Read Routes
+    // @GetMapping("search/{scenery}/{budgetLimit}")
+    // public List<PlaceData> findBySceneryAndBudgetLimit(@PathVariable String scenery, @PathVariable String budgetLimit) {
+    //     if(scenery.equals("all") && budgetLimit.equals("all")) {
+    //         return repository.findByBudgetLimit(budgetLimit);
+    //     }
+    //     else if() 
+    // }   
 
+        
+
+    
+    
     @GetMapping("find/{scenery}/{budgetLimit}")
     public List<PlaceData> findBySceneryAndBudgetLimitLessThanEqual(@PathVariable String scenery, @PathVariable("budgetLimit") int budgetLimit) {
         //int budgetLimitInt = Integer.parseInt(budgetLimit);
